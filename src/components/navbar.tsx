@@ -19,6 +19,7 @@ import {
   InstagramIcon,
   GithubIcon,
   DiscordIcon,
+  TiktokIcon,
   SearchIcon,
 } from "@/components/icons";
 import { Logo } from "@/components/icons";
@@ -81,6 +82,9 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2">
+          <Link isExternal href={siteConfig.links.tiktok} title="Instagram">
+            <TiktokIcon className="text-default-500" />
+          </Link>
           <Link isExternal href={siteConfig.links.instagram} title="Instagram">
             <InstagramIcon className="text-default-500" />
           </Link>
@@ -93,7 +97,7 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
 
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
+        {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
         <div>DanDevIT</div>
       </NavbarContent>
 

@@ -48,10 +48,9 @@ export const siteConfig = {
     },
   ],
   links: {
+    tiktok: "https://www.tiktok.com/@ch.b.golden",
     github: "https://github.com/thangtran1",
     instagram: "https://instagram.com/tranvanthang22",
-    docs: "https://heroui.com",
     discord: "https://discord.com/users/thangzidane_84415",
-    sponsor: "https://patreon.com/jrgarciadev",
   },
 };

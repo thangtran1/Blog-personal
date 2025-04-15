@@ -17,7 +17,7 @@ import DefaultLayout from "@/layouts/default";
 const bio = {
   name: "Vanthang",
   age: "21 Age - crypto investors",
-  avatar: "/check.jpg",
+  avatar: "/avatar.jpg",
   links: [
     {
       label: "Portfolio Website",
