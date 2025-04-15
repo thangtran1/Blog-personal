@@ -17,7 +17,7 @@ import DefaultLayout from "@/layouts/default";
 const bio = {
   name: "Vanthang",
   age: "21 Age - crypto investors",
-  avatar: "/vite.svg",
+  avatar: "/check.jpg",
   links: [
     {
       label: "Portfolio Website",
@@ -50,10 +50,10 @@ const bio = {
 export default function BioPage() {
   return (
     <DefaultLayout>
-      <section className="min-h-screen flex flex-col items-center justify-center px-4 pb-10">
+      <section className="min-h-[calc(100vh-130px)] flex flex-col items-center justify-center px-4">
         <img
           alt="Avatar"
-          className="w-24 h-24 rounded-full mb-4 object-cover"
+          className="w-28 h-28 rounded-full mb-4 object-cover"
           src={bio.avatar}
         />
         <h1 className="text-xl font-bold text-center">@{bio.name}</h1>
@@ -91,11 +91,15 @@ export default function BioPage() {
                         size="sm"
                         variant="light"
                         onClick={(e) => {
-                          e.preventDefault(); // 🛑 ngăn click vào thẻ <a>
-                          e.stopPropagation(); // 🛑 ngăn lan ra ngoài
+                          e.preventDefault();
+                          e.stopPropagation();
                         }}
                       >
-                        <HiDotsVertical className="text-default-300" />
+                        <HiDotsVertical
+                          className="text-default-300 "
+                          size={20}
+                          color="black"
+                        />
                       </Button>
                     </DropdownTrigger>
                     <DropdownMenu>
@@ -108,14 +112,6 @@ export default function BioPage() {
               </div>
             </a>
           ))}
-        </div>
-
-        {/* Footer (giống linktree) */}
-        <div className="mt-10 w-full text-center text-sm text-gray-400">
-          <div className="w-fit mx-auto bg-white px-4 py-1 rounded-full shadow-sm flex items-center gap-2 border">
-            <span className="text-black font-medium">linktr.ee/you ✕</span>
-          </div>
-          <p className="mt-2">Tham gia cùng {bio.name} trên Linktree</p>
         </div>
       </section>
     </DefaultLayout>
