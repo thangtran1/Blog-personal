@@ -1,7 +1,5 @@
 import { FaGithub } from "react-icons/fa6";
-import { LuTwitter } from "react-icons/lu";
 import { MdFacebook } from "react-icons/md";
-import { FaTelegram } from "react-icons/fa";
 import { TbBrandGravatar } from "react-icons/tb";
 import { HiDotsVertical } from "react-icons/hi";
 import {
@@ -12,6 +10,7 @@ import {
 } from "@heroui/dropdown";
 import { Button } from "@heroui/button";
 
+import { TiktokIcon, InstagramIcon } from "@/components/icons";
 import DefaultLayout from "@/layouts/default";
 
 const bio = {
@@ -20,9 +19,10 @@ const bio = {
   avatar: "/avatar.jpg",
   links: [
     {
-      label: "Portfolio Website",
-      url: "https://your-portfolio.com",
+      label: "My Portfolio",
+      url: "/myportfolio",
       icon: <TbBrandGravatar />,
+      isInternal: true,
     },
     {
       label: "Github",
@@ -30,19 +30,19 @@ const bio = {
       icon: <FaGithub />,
     },
     {
-      label: "Twitter",
-      url: "https://twitter.com/your-twitter",
-      icon: <LuTwitter />,
+      label: "Instagram",
+      url: "https://instagram.com/tranvanthang22",
+      icon: <InstagramIcon />,
     },
     {
       label: "Profile Facebook",
-      url: "https://facebook.com/your-profile",
+      url: "https://www.facebook.com/share/1Do8bcSUrs/",
       icon: <MdFacebook />,
     },
     {
-      label: "Telegram",
-      url: "https://t.me/your-telegram",
-      icon: <FaTelegram />,
+      label: "Tiktok",
+      url: "https://www.tiktok.com/@ch.b.golden",
+      icon: <TiktokIcon />,
     },
   ],
 };

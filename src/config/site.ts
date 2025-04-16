@@ -8,39 +8,35 @@ export const siteConfig = {
       label: "Home",
       href: "/",
     },
-    {
-      label: "About",
-      href: "/about",
-    },
   ],
   navMenuItems: [
     {
-      label: "Profile",
-      href: "/profile",
+      label: "My Portfolio",
+      url: "/myportfolio",
     },
     {
-      label: "Dashboard",
-      href: "/dashboard",
+      label: "Home",
+      url: "/",
     },
     {
-      label: "Projects",
-      href: "/projects",
+      label: "Tiktok",
+      url: "https://www.tiktok.com/@ch.b.golden",
     },
     {
       label: "Team",
-      href: "/team",
+      url: "/team",
     },
     {
       label: "Calendar",
-      href: "/calendar",
+      url: "/calendar",
     },
     {
       label: "Settings",
-      href: "/settings",
+      url: "/settings",
     },
     {
       label: "Help & Feedback",
-      href: "/help-feedback",
+      url: "/help-feedback",
     },
     {
       label: "Logout",

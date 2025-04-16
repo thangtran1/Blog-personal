@@ -56,7 +56,7 @@ export const Navbar = () => {
             href="/"
           >
             <Logo />
-            <p className="font-bold text-inherit">ACME</p>
+            <p className="font-bold text-inherit">TVT</p>
           </Link>
         </NavbarBrand>
         <div className="hidden lg:flex gap-4 justify-start ml-2">
@@ -113,8 +113,10 @@ export const Navbar = () => {
         {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
+            <NavbarMenuItem key={`${item.label}-${index}`}>
               <Link
+                target="_blank"
+                href={item.url || item.href}
                 color={
                   index === 2
                     ? "primary"
@@ -122,7 +124,6 @@ export const Navbar = () => {
                       ? "danger"
                       : "foreground"
                 }
-                href="#"
                 size="lg"
               >
                 {item.label}
