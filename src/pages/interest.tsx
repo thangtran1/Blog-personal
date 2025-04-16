@@ -54,7 +54,7 @@ const bio = {
   ],
 };
 
-export default function IndexPage() {
+export default function InterestPage() {
   const { searchValue } = useSearch();
 
   const filteredLinks = bio.links.filter((link) =>

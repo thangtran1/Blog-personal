@@ -1,14 +1,17 @@
 import { Route, Routes } from "react-router-dom";
-
 import IndexPage from "@/pages/index";
-import BioPage from "./pages/portfolio";
-
+import Myportfolio from "./pages/portfolio";
+import InterestPage from "./pages/interest";
+import SearchProvider from "./shared/search";
 function App() {
   return (
-    <Routes>
-      <Route element={<IndexPage />} path="/" />
-      <Route element={<BioPage />} path="/myportfolio" />
-    </Routes>
+    <SearchProvider>
+      <Routes>
+        <Route element={<IndexPage />} path="/" />
+        <Route element={<Myportfolio />} path="/myportfolio" />
+        <Route element={<InterestPage />} path="/interest" />
+      </Routes>
+    </SearchProvider>
   );
 }
 

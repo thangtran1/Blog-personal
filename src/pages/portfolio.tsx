@@ -1,4 +1,4 @@
-import { FaGithub } from "react-icons/fa6";
+import { FaGithub, FaFutbol } from "react-icons/fa6";
 import { MdFacebook } from "react-icons/md";
 import { TbBrandGravatar } from "react-icons/tb";
 import { HiDotsVertical } from "react-icons/hi";
@@ -12,6 +12,7 @@ import { Button } from "@heroui/button";
 
 import { TiktokIcon, InstagramIcon } from "@/components/icons";
 import DefaultLayout from "@/layouts/default";
+import { useSearch } from "@/shared/search";
 
 const bio = {
   name: "Vanthang",
@@ -22,6 +23,12 @@ const bio = {
       label: "My Portfolio",
       url: "/myportfolio",
       icon: <TbBrandGravatar />,
+      isInternal: true,
+    },
+    {
+      label: "My Interest",
+      url: "/interest",
+      icon: <FaFutbol />,
       isInternal: true,
     },
     {
@@ -47,7 +54,12 @@ const bio = {
   ],
 };
 
-export default function BioPage() {
+export default function Myportfolio() {
+  const { searchValue } = useSearch();
+
+  const filteredLinks = bio.links.filter((link) =>
+    link.label.toLowerCase().includes(searchValue.toLowerCase())
+  );
   return (
     <DefaultLayout>
       <section className="min-h-[calc(100vh-130px)] flex flex-col items-center justify-center px-4">
@@ -60,7 +72,7 @@ export default function BioPage() {
         <p className="text-sm text-gray-500 text-center">{bio.age}</p>
 
         <div className="mt-6 w-full max-w-md flex flex-col gap-3">
-          {bio.links.map((link, idx) => (
+          {filteredLinks.map((link, idx) => (
             <a
               key={idx}
               className="group flex items-center justify-between w-full bg-green-500 hover:bg-green-400 transition-all duration-300 ease-in-out text-white px-5 py-3 rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02]"

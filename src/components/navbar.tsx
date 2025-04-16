@@ -10,9 +10,6 @@ import {
   NavbarMenu,
   NavbarMenuItem,
 } from "@heroui/navbar";
-import { link as linkStyles } from "@heroui/theme";
-import clsx from "clsx";
-
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import {
@@ -23,8 +20,10 @@ import {
   SearchIcon,
 } from "@/components/icons";
 import { Logo } from "@/components/icons";
+import { useSearch } from "@/shared/search";
 
 export const Navbar = () => {
+  const { searchValue, setSearchValue } = useSearch();
   const searchInput = (
     <Input
       aria-label="Search"
@@ -32,6 +31,8 @@ export const Navbar = () => {
         inputWrapper: "bg-default-100",
         input: "text-sm",
       }}
+      value={searchValue}
+      onChange={(e) => setSearchValue(e.target.value)}
       endContent={
         <Kbd className="hidden lg:inline-block" keys={["command"]}>
           K
@@ -60,20 +61,28 @@ export const Navbar = () => {
           </Link>
         </NavbarBrand>
         <div className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <Link
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium"
-                )}
-                color="foreground"
-                href={item.href}
-              >
-                {item.label}
-              </Link>
-            </NavbarItem>
-          ))}
+          {siteConfig.navMenuItems
+            .filter((item) =>
+              item.label.toLowerCase().includes(searchValue.toLowerCase())
+            )
+            .map((item, index) => (
+              <NavbarMenuItem key={`${item.label}-${index}`}>
+                <Link
+                  // target="_blank"  // chuyển hướng trang mới
+                  href={item.url}
+                  color={
+                    index === 2 || index === 0
+                      ? "primary"
+                      : index === siteConfig.navMenuItems.length - 1
+                        ? "danger"
+                        : "foreground"
+                  }
+                  size="lg"
+                >
+                  {item.label}
+                </Link>
+              </NavbarMenuItem>
+            ))}
         </div>
       </NavbarContent>
 
@@ -97,7 +106,7 @@ export const Navbar = () => {
           <ThemeSwitch />
         </NavbarItem>
 
-        {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
+        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
         <div>DanDevIT</div>
       </NavbarContent>
 
@@ -112,24 +121,28 @@ export const Navbar = () => {
       <NavbarMenu>
         {searchInput}
         <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item.label}-${index}`}>
-              <Link
-                target="_blank"
-                href={item.url || item.href}
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
+          {siteConfig.navMenuItems
+            .filter((item) =>
+              item.label.toLowerCase().includes(searchValue.toLowerCase())
+            )
+            .map((item, index) => (
+              <NavbarMenuItem key={`${item.label}-${index}`}>
+                <Link
+                  target="_blank"
+                  href={item.url}
+                  color={
+                    index === 2 || index === 0
+                      ? "primary"
+                      : index === siteConfig.navMenuItems.length - 1
+                        ? "danger"
+                        : "foreground"
+                  }
+                  size="lg"
+                >
+                  {item.label}
+                </Link>
+              </NavbarMenuItem>
+            ))}
         </div>
       </NavbarMenu>
     </HeroUINavbar>
