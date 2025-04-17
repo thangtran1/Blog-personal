@@ -60,7 +60,7 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">TVT</p>
           </Link>
         </NavbarBrand>
-        <div className="hidden lg:flex gap-4 justify-start ml-2">
+        {/* <div className="hidden lg:flex gap-4 justify-start ml-2">
           {siteConfig.navMenuItems
             .filter((item) =>
               item.label.toLowerCase().includes(searchValue.toLowerCase())
@@ -83,7 +83,7 @@ export const Navbar = () => {
                 </Link>
               </NavbarMenuItem>
             ))}
-        </div>
+        </div> */}
       </NavbarContent>
 
       <NavbarContent
