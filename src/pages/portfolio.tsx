@@ -16,8 +16,12 @@ import { motion } from 'framer-motion'
 import { Button } from '@heroui/button'
 import { FaCheckCircle } from 'react-icons/fa'
 import { FaEnvelope, FaFacebook, FaFacebookMessenger } from 'react-icons/fa'
+import emailjs from 'emailjs-com'
+import { useState } from 'react'
 
 import DefaultLayout from '@/layouts/default'
+import { toast } from 'react-toastify'
+
 const frontendSkillsLeft = [
   'UI/UX',
   'CSS',
@@ -70,6 +74,77 @@ export default function MyPortfolio() {
       label: 'Chat on Messenger'
     }
   ]
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    message: ''
+  })
+
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }))
+    setErrors((prev) => ({
+      ...prev,
+      [name]: ''
+    }))
+  }
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    let formErrors = { ...errors }
+    let isValid = true
+
+    if (!formData.name) {
+      formErrors.name = 'Name is required'
+      isValid = false
+    }
+    if (!formData.email) {
+      formErrors.email = 'Email is required'
+      isValid = false
+    }
+    if (!formData.message) {
+      formErrors.message = 'Message is required'
+      isValid = false
+    }
+
+    setErrors(formErrors)
+
+    if (!isValid) return
+
+    setIsSubmitting(true)
+
+    emailjs
+      .send(
+        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+        formData,
+        process.env.REACT_APP_EMAILJS_USER_ID!
+      )
+      .then(
+        () => {
+          setIsSubmitting(false)
+          setFormData({ name: '', email: '', message: '' })
+          toast.success('Message sent successfully!')
+        },
+        () => {
+          setIsSubmitting(false)
+          toast.error('Something went wrong, please try again later.')
+        }
+      )
+  }
 
   return (
     <DefaultLayout>
@@ -77,40 +152,40 @@ export default function MyPortfolio() {
         {/* return scroll */}
         <div className="flex fixed bottom-10 z-50 left-1/2 transform -translate-x-1/2 bg-teal-700 rounded-full py-2 px-6 shadow-lg space-x-6">
           <a
-            href="#about"
             className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
+            href="#about"
           >
             <FiHome className="text-2xl" />
             <span className="text-xs">About</span>
           </a>
 
           <a
-            href="#experience"
             className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
+            href="#experience"
           >
             <FiUser className="text-2xl" />
             <span className="text-xs">Experience</span>
           </a>
 
           <a
-            href="#work"
             className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
+            href="#work"
           >
             <FiBook className="text-2xl" />
             <span className="text-xs">Work</span>
           </a>
 
           <a
-            href="#contact"
             className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
+            href="#contact"
           >
             <FiGrid className="text-2xl" />
             <span className="text-xs">Contact</span>
           </a>
 
           <a
-            href="#footer"
             className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
+            href="#footer"
           >
             <FiFileText className="text-2xl" />
             <span className="text-xs">Footer</span>
@@ -332,25 +407,52 @@ export default function MyPortfolio() {
             </div>
 
             {/* Right: Form */}
-            <form className="w-full md:w-2/3 space-y-4">
-              <input
-                className="w-full p-4 bg-transparent border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 text-white placeholder:text-green-200"
-                placeholder="Your Full Name"
-                type="text"
-              />
-              <input
-                className="w-full p-4 bg-transparent border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 text-white placeholder:text-green-200"
-                placeholder="Your Email"
-                type="email"
-              />
-              <textarea
-                className="w-full p-4 bg-transparent border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 text-white placeholder:text-green-200"
-                placeholder="Your Message"
-                rows={6}
-              />
-              <Button className="bg-green-400 text-white px-6 py-2 hover:bg-green-500 transition rounded-md">
-                Send Message
-              </Button>
+            <form className="w-full md:w-2/3 space-y-4" onSubmit={handleSubmit}>
+              <div>
+                <input
+                  className="w-full p-4 bg-transparent border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 text-white placeholder:text-green-200"
+                  disabled={isSubmitting}
+                  name="name"
+                  placeholder="Your Full Name"
+                  type="text"
+                  value={formData.name}
+                  onChange={handleChange}
+                />
+                {errors.name && <p className="text-red-500 text-sm flex mt-1">{errors.name}</p>}
+              </div>
+
+              <div>
+                <input
+                  className="w-full p-4 bg-transparent border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 text-white placeholder:text-green-200"
+                  disabled={isSubmitting}
+                  name="email"
+                  placeholder="Your Email"
+                  type="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                {errors.email && <p className="text-red-500 text-sm mt-1 flex">{errors.email}</p>}
+              </div>
+
+              <div>
+                <textarea
+                  className="w-full p-4 bg-transparent border border-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 text-white placeholder:text-green-200"
+                  disabled={isSubmitting}
+                  name="message"
+                  placeholder="Your Message"
+                  rows={6}
+                  value={formData.message}
+                  onChange={handleChange}
+                />
+                {errors.message && <p className="text-red-500 text-sm flex">{errors.message}</p>}
+              </div>
+
+              <button
+                className="bg-green-400 text-white px-6 py-2 hover:bg-green-500 transition rounded-md"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+              </button>
             </form>
           </div>
         </motion.section>
