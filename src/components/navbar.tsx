@@ -123,7 +123,7 @@ export const Navbar = () => {
         <div className="mx-4 mt-2 flex flex-col gap-2">
           {siteConfig.navMenuItems
             .filter((item) =>
-              item.label.toLowerCase().includes(searchValue.toLowerCase())
+              item.label.toLowerCase().includes(searchValue.toLowerCase()),
             )
             .map((item, index) => (
               <NavbarMenuItem key={`${item.label}-${index}`}>

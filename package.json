@@ -9,6 +9,7 @@
     "lint": "eslint -c .eslintrc.json ./src/**/**/*.{ts,tsx} --fix",
     "preview": "vite preview"
   },
+  "endOfLine": "lf",
   "dependencies": {
     "@headlessui/react": "^2.2.2",
     "@heroui/button": "2.2.17",

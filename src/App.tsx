@@ -1,9 +1,9 @@
-import { Route, Routes } from "react-router-dom";
-import IndexPage from "@/pages/index";
-import Myportfolio from "./pages/portfolio";
-import InterestPage from "./pages/interest";
-import SearchProvider from "./shared/search";
-import { Navbar } from "./components/navbar";
+import { Route, Routes } from 'react-router-dom'
+import IndexPage from '@/pages/index'
+import Myportfolio from './pages/portfolio'
+import InterestPage from './pages/interest'
+import SearchProvider from './shared/search'
+import { Navbar } from './components/navbar'
 function App() {
   return (
     <SearchProvider>
@@ -14,7 +14,7 @@ function App() {
         <Route element={<InterestPage />} path="/interest" />
       </Routes>
     </SearchProvider>
-  );
+  )
 }
 
-export default App;
+export default App
