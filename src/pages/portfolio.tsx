@@ -18,9 +18,9 @@ import { FaCheckCircle } from 'react-icons/fa'
 import { FaEnvelope, FaFacebook, FaFacebookMessenger } from 'react-icons/fa'
 import emailjs from 'emailjs-com'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 import DefaultLayout from '@/layouts/default'
-import { toast } from 'react-toastify'
 
 const frontendSkillsLeft = [
   'UI/UX',
@@ -128,10 +128,10 @@ export default function MyPortfolio() {
 
     emailjs
       .send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formData,
-        process.env.REACT_APP_EMAILJS_USER_ID!
+        import.meta.env.VITE_EMAILJS_USER_ID
       )
       .then(
         () => {
