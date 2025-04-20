@@ -18,9 +18,9 @@ import { FaCheckCircle } from 'react-icons/fa'
 import { FaEnvelope, FaFacebook, FaFacebookMessenger } from 'react-icons/fa'
 import emailjs from 'emailjs-com'
 import { useState } from 'react'
-import { toast } from 'react-toastify'
 
 import DefaultLayout from '@/layouts/default'
+import { toast } from 'react-toastify'
 
 const frontendSkillsLeft = [
   'UI/UX',
@@ -50,14 +50,41 @@ const backendSkillsRight = [
   'Deployment (Render, Vercel)'
 ]
 
+const portfolioItems = [
+  {
+    title: 'Room Booing Website',
+    githubLink: 'https://github.com/thangtran1/RoomBooking',
+    demoLink: '#',
+    image: './homePT.png'
+  },
+  {
+    title: 'Socket.io Website',
+    githubLink: 'https://github.com/thangtran1/Shop_Ecommer_TVT',
+    demoLink: '#',
+    image: './socket.png'
+  },
+  {
+    title: 'Ecommer Website',
+    githubLink: 'https://github.com/thangtran1/Shop_Ecommer_TVT',
+    demoLink: '#',
+    image: './Ecommer.png'
+  },
+  {
+    title: 'Blog Personal',
+    githubLink: 'https://github.com/thangtran1/Blog-personal',
+    demoLink: '#',
+    image: './blog-personal.png'
+  }
+]
+
 export default function MyPortfolio() {
   const contactMethods = [
     {
       icon: <FaEnvelope className="text-white text-2xl" />,
-      title: 'Email',
-      detail: 'thangtrandz04@gmail.com',
-      link: 'mailto:thangtrandz04@gmail.com',
-      label: 'Send an Email'
+      title: 'Github',
+      detail: 'thangtran1',
+      link: 'https://github.com/thangtran1',
+      label: 'Send an Github'
     },
     {
       icon: <FaFacebook className="text-white text-2xl" />,
@@ -128,10 +155,10 @@ export default function MyPortfolio() {
 
     emailjs
       .send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
+        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
         formData,
-        import.meta.env.VITE_EMAILJS_USER_ID
+        process.env.REACT_APP_EMAILJS_USER_ID!
       )
       .then(
         () => {
@@ -169,7 +196,7 @@ export default function MyPortfolio() {
 
           <a
             className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
-            href="#work"
+            href="#portfolio"
           >
             <FiBook className="text-2xl" />
             <span className="text-xs">Work</span>
@@ -346,30 +373,44 @@ export default function MyPortfolio() {
 
         {/* Work */}
         <motion.section
-          className="space-y-6"
-          id="work"
+          className="space-y-8"
+          id="portfolio"
           initial={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.6 }}
           whileInView={{ opacity: 1, scale: 1 }}
         >
-          <FiFolder className="w-14 h-14 mx-auto text-purple-500" />
-          <h2 className="text-4xl font-extrabold">My Recent Work</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
+          <h2 className="text-4xl font-extrabold text-center text-teal-500">Portfolio</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {portfolioItems.map((item, idx) => (
               <motion.div
-                key={i}
-                className="bg-white p-6 rounded-2xl shadow-xl hover:shadow-2xl transition cursor-pointer"
+                key={idx}
+                className="p-2 rounded-2xl  hover:bg-[#55828b] bg-[#44757f] border hover:border-[#55828b] "
                 whileHover={{ scale: 1.05 }}
               >
-                <h3 className="font-semibold text-xl mb-1">Project {i}</h3>
-                <p className="text-sm text-gray-500">
-                  A modern web app built using latest tech stack including React and Tailwind CSS.
-                </p>
+                <img
+                  alt={item.title}
+                  className="w-full h-[150px] object-cover rounded-lg mb-4"
+                  src={item.image}
+                />
+                <p className="font-semibold text-2xl  mb-2">{item.title}</p>
+                <div className="flex justify-center gap-3 items-center">
+                  <a
+                    className="bg-teal-500 text-white py-2 px-4 rounded-full text-sm font-medium hover:bg-teal-600 hover:scale-95 transition-all"
+                    href={item.githubLink}
+                  >
+                    Github
+                  </a>
+                  <a
+                    className="bg-teal-500 text-white py-2 px-4 rounded-full text-sm font-medium hover:bg-teal-600 hover:scale-95 transition-all"
+                    href={item.demoLink}
+                  >
+                    Live Demo
+                  </a>
+                </div>
               </motion.div>
             ))}
           </div>
         </motion.section>
-
         {/* Contact */}
         <motion.section
           className="py-16 px-4 md:px-12 bg-[#375A64] bg-pattern bg-cover"
@@ -451,7 +492,7 @@ export default function MyPortfolio() {
                 className="bg-green-400 text-white px-6 py-2 hover:bg-green-500 transition rounded-md"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? 'Sending...' : 'Send Mail'}
               </button>
             </form>
           </div>

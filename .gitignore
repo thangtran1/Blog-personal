@@ -23,7 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-
 pnpm-lock.yaml
 yarn.lock
 package-lock.json
@@ -32,3 +31,6 @@ bun.lockb
 # Environment files (to exclude .env files)
 .env
 .env.*
+
+# Exclude image files from public folder
+public/**/*.{jpg,jpeg,png,gif,svg,webp}
