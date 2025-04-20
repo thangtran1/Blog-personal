@@ -1,7 +1,6 @@
 import {
   FiUser,
   FiBriefcase,
-  FiFolder,
   FiSend,
   FiMail,
   FiPhone,
@@ -18,9 +17,9 @@ import { FaCheckCircle } from 'react-icons/fa'
 import { FaEnvelope, FaFacebook, FaFacebookMessenger } from 'react-icons/fa'
 import emailjs from 'emailjs-com'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 import DefaultLayout from '@/layouts/default'
-import { toast } from 'react-toastify'
 
 const frontendSkillsLeft = [
   'UI/UX',
