@@ -51,30 +51,6 @@ export const Navbar = () => {
             <p className="font-bold text-inherit">TVT</p>
           </Link>
         </NavbarBrand>
-        {/* <div className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navMenuItems
-            .filter((item) =>
-              item.label.toLowerCase().includes(searchValue.toLowerCase())
-            )
-            .map((item, index) => (
-              <NavbarMenuItem key={`${item.label}-${index}`}>
-                <Link
-                  // target="_blank"  // chuyển hướng trang mới
-                  href={item.url}
-                  color={
-                    index === 2 || index === 0
-                      ? "primary"
-                      : index === siteConfig.navMenuItems.length - 1
-                        ? "danger"
-                        : "foreground"
-                  }
-                  size="lg"
-                >
-                  {item.label}
-                </Link>
-              </NavbarMenuItem>
-            ))}
-        </div> */}
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">

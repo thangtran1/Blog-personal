@@ -20,67 +20,13 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 import DefaultLayout from '@/layouts/default'
-
-const frontendSkillsLeft = [
-  'UI/UX',
-  'CSS',
-  'ReactJS',
-  'Javascript',
-  'TailwindCSS',
-  'HeroUI',
-  'NextJS'
-]
-
-const backendSkillsLeft = [
-  'NodeJS',
-  'ExpressJS',
-  'RESTful APIs',
-  'Authentication (JWT)',
-  'MySQL / PostgreSQL',
-  'MongoDB'
-]
-
-const frontendSkillsRight = ['HTML', 'Javascript', 'Bootstrap & Ant', 'SASS', 'Material UI']
-const backendSkillsRight = [
-  'Sequelize / ORM',
-  'Socket.IO',
-  'Cloudinary / AWS S3',
-  'Redis / Caching',
-  'Deployment (Render, Vercel)'
-]
-
-const portfolioItems = [
-  {
-    title: 'Room Booing Website',
-    githubLink: 'https://github.com/thangtran1/RoomBooking',
-    demoLink: '#',
-    image: './homePT.png'
-  },
-  {
-    title: 'Socket.io Website',
-    githubLink: 'https://github.com/thangtran1/Shop_Ecommer_TVT',
-    demoLink: '#',
-    image: './socket.png'
-  },
-  {
-    title: 'Ecommer Website',
-    githubLink: 'https://github.com/thangtran1/Shop_Ecommer_TVT',
-    demoLink: '#',
-    image: './Ecommer.png'
-  },
-  {
-    title: 'Blog Personal',
-    githubLink: 'https://github.com/thangtran1/Blog-personal',
-    demoLink: '#',
-    image: './blog-personal.png'
-  },
-  {
-    title: 'Khóa Học Rẻ',
-    githubLink: 'https://github.com/thangtran1/khoahocre_FE',
-    demoLink: '#',
-    image: './khoahocre.png'
-  }
-]
+import {
+  backendSkillsLeft,
+  backendSkillsRight,
+  frontendSkillsLeft,
+  frontendSkillsRight,
+  portfolioItems
+} from './data'
 
 export default function MyPortfolio() {
   const contactMethods = [
@@ -160,10 +106,10 @@ export default function MyPortfolio() {
 
     emailjs
       .send(
-        process.env.REACT_APP_EMAILJS_SERVICE_ID!,
-        process.env.REACT_APP_EMAILJS_TEMPLATE_ID!,
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formData,
-        process.env.REACT_APP_EMAILJS_USER_ID!
+        import.meta.env.VITE_EMAILJS_USER_ID
       )
       .then(
         () => {
@@ -181,7 +127,6 @@ export default function MyPortfolio() {
   return (
     <DefaultLayout>
       <div className="space-y-12 mb-32 px-6  max-w-7xl mx-auto text-center">
-        {/* return scroll */}
         <div className="flex fixed bottom-10 z-50 left-1/2 transform -translate-x-1/2 bg-teal-700 rounded-full shadow-lg">
           <div className="p-1 flex gap-5">
             <a
@@ -225,7 +170,6 @@ export default function MyPortfolio() {
             </a>
           </div>
         </div>
-        {/* infomation */}
         <motion.section
           className="mt-20 px-6 space-y-6"
           id="about"
@@ -268,7 +212,6 @@ export default function MyPortfolio() {
             <h2 className="text-4xl font-extrabold text-white">About Me</h2>
           </div>
         </motion.section>
-        {/* About  */}
         <motion.section
           className="space-y-6"
           id="experience"
@@ -418,7 +361,6 @@ export default function MyPortfolio() {
             ))}
           </div>
         </motion.section>
-        {/* Contact */}
         <motion.section
           className="py-16 px-4 md:px-12 bg-[#375A64] bg-pattern bg-cover"
           id="contact"
@@ -454,7 +396,6 @@ export default function MyPortfolio() {
               ))}
             </div>
 
-            {/* Right: Form */}
             <form className="w-full md:w-2/3 space-y-4" onSubmit={handleSubmit}>
               <div>
                 <input
@@ -504,7 +445,6 @@ export default function MyPortfolio() {
             </form>
           </div>
         </motion.section>
-        {/* Footer */}
         <div className="px-6 space-y-3">
           <footer className="pt-16 border-t text-gray-400 text-sm">
             <p>© 2025 MyPortfolio. All rights reserved.</p>

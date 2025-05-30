@@ -1,109 +1,12 @@
 import { motion } from 'framer-motion'
 
+import { eventImages, familyImages } from './data'
 import DefaultLayout from '@/layouts/default'
-
-const familyImages = [
-  {
-    id: 1,
-    title: 'Gia đình',
-    imageUrl: './gd.jpg',
-    detailLink: '/life/details/family-photo1'
-  },
-  {
-    id: 2,
-    title: 'Gia đình',
-    imageUrl: './gd1.jpg',
-    detailLink: '/life/details/family-photo2'
-  },
-  {
-    id: 3,
-    title: 'Hai anh và Chị cả',
-    imageUrl: './gd2.jpg',
-    detailLink: '/life/details/family-photo3'
-  },
-  {
-    id: 5,
-    title: 'Anh zai trưởng',
-    imageUrl: './anhca.jpg',
-    detailLink: '/life/details/family-photo4'
-  },
-  {
-    id: 4,
-    title: 'Anh hai',
-    imageUrl: './anhhai.jpg',
-    detailLink: '/life/details/family-photo4'
-  },
-  {
-    id: 6,
-    title: 'Hai anh của toii nè',
-    imageUrl: './haianh.jpg',
-    detailLink: '/life/details/family-photo4'
-  },
-  {
-    id: 7,
-    title: 'Mẹ & tôi',
-    imageUrl: './gd3.jpg',
-    detailLink: '/life/details/family-photo4'
-  },
-  {
-    id: 8,
-    title: 'Hai gì cháu',
-    imageUrl: './gd4.jpg',
-    detailLink: '/life/details/family-photo4'
-  },
-  {
-    id: 9,
-    title: 'Du Xuân',
-    imageUrl: './gd5.jpg',
-    detailLink: '/life/details/family-photo4'
-  }
-]
-
-const eventImages = [
-  {
-    id: 5,
-    title: 'Tốt nghiệp',
-    imageUrl: './totnghiep.jpg',
-    detailLink: '/life/details/event-photo5'
-  },
-  {
-    id: 6,
-    title: 'Tốt nghiệp',
-    imageUrl: './totnghiep1.jpg',
-
-    detailLink: '/life/details/event-photo6'
-  },
-  {
-    id: 7,
-    title: 'Tốt nghiệp',
-    imageUrl: './totnghiep2.jpg',
-    detailLink: '/life/details/event-photo7'
-  },
-  {
-    id: 8,
-    title: 'Anh híu & tôi',
-    imageUrl: './totnghiep3.jpg',
-    detailLink: '/life/details/event-photo8'
-  },
-  {
-    id: 9,
-    title: 'Tốt nghiệp',
-    imageUrl: './totnghiep4.jpg',
-    detailLink: '/life/details/event-photo8'
-  },
-  {
-    id: 10,
-    title: 'Tốt nghiệp',
-    imageUrl: './totnghiep5.jpg',
-    detailLink: '/life/details/event-photo8'
-  }
-]
 
 export default function LifePage() {
   return (
     <DefaultLayout>
       <div className="space-y-20 mb-32 px-6 max-w-5xl mx-auto text-center">
-        {/* Giới thiệu */}
         <motion.section
           className="mt-20 space-y-6"
           id="about-life"
@@ -124,7 +27,6 @@ export default function LifePage() {
           <span className=" mt-2 text-sm text-gray-500 p-0 m-0">Ngôi nhà nhỏ của tôi ❤️❤️❤️</span>
         </motion.section>
 
-        {/* Nhật ký */}
         <motion.section
           className="space-y-8"
           id="diary"
@@ -137,7 +39,6 @@ export default function LifePage() {
             <span className="text-sm text-gray-500">(Một chút về hành trình của tôi)</span>
           </h3>
           <div className="space-y-6 text-left">
-            {/* Nhật ký ngày 1 */}
             <div className="bg-white shadow-lg p-6 rounded-xl hover:scale-105 transition-all ease-in-out">
               <p className="font-semibold text-gray-800">01/08/2022</p>
               <p className="text-gray-600 mt-2">
@@ -147,7 +48,6 @@ export default function LifePage() {
               </p>
             </div>
 
-            {/* Nhật ký ngày 2 */}
             <div className="bg-white shadow-lg p-6 rounded-xl hover:scale-105 transition-all ease-in-out">
               <p className="font-semibold text-gray-800">13/07/2024</p>
               <p className="text-gray-600 mt-2">
@@ -157,7 +57,6 @@ export default function LifePage() {
               </p>
             </div>
 
-            {/* Nhật ký ngày 3 */}
             <div className="bg-white shadow-lg p-6 rounded-xl hover:scale-105 transition-all ease-in-out">
               <p className="font-semibold text-gray-800">21/12/2024</p>
               <p className="text-gray-600 mt-2">
@@ -175,7 +74,6 @@ export default function LifePage() {
           </div>
         </motion.section>
 
-        {/* Album ảnh */}
         <motion.section
           id="family-gallery"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -204,7 +102,6 @@ export default function LifePage() {
           </div>
         </motion.section>
 
-        {/* Sự Kiện Gia Đình */}
         <motion.section
           id="family-events"
           initial={{ opacity: 0, scale: 0.95 }}
@@ -233,7 +130,6 @@ export default function LifePage() {
           </div>
         </motion.section>
 
-        {/* Sở thích */}
         <motion.section
           className="space-y-6"
           id="hobbies"
