@@ -239,7 +239,7 @@ export default function MyPortfolio() {
             <p>FullStack Developer</p>
           </div>
           <div className="flex gap-4 w-full justify-center">
-            <a download href="/CV.pdf">
+            <a download href="/CV-final.pdf">
               <Button color="primary" variant="bordered">
                 Download CV
               </Button>
