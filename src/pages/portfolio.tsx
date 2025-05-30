@@ -73,6 +73,12 @@ const portfolioItems = [
     githubLink: 'https://github.com/thangtran1/Blog-personal',
     demoLink: '#',
     image: './blog-personal.png'
+  },
+  {
+    title: 'Khóa Học Rẻ',
+    githubLink: 'https://github.com/thangtran1/khoahocre_FE',
+    demoLink: '#',
+    image: './khoahocre.png'
   }
 ]
 
@@ -176,46 +182,48 @@ export default function MyPortfolio() {
     <DefaultLayout>
       <div className="space-y-12 mb-32 px-6  max-w-7xl mx-auto text-center">
         {/* return scroll */}
-        <div className="flex fixed bottom-10 z-50 left-1/2 transform -translate-x-1/2 bg-teal-700 rounded-full py-2 px-6 shadow-lg space-x-6">
-          <a
-            className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
-            href="#about"
-          >
-            <FiHome className="text-2xl" />
-            <span className="text-xs">About</span>
-          </a>
+        <div className="flex fixed bottom-10 z-50 left-1/2 transform -translate-x-1/2 bg-teal-700 rounded-full shadow-lg">
+          <div className="p-1 flex gap-5">
+            <a
+              className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
+              href="#about"
+            >
+              <FiHome className="text-2xl" />
+              <span className="text-xs">About</span>
+            </a>
 
-          <a
-            className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
-            href="#experience"
-          >
-            <FiUser className="text-2xl" />
-            <span className="text-xs">Experience</span>
-          </a>
+            <a
+              className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
+              href="#experience"
+            >
+              <FiUser className="text-2xl" />
+              <span className="text-xs">Experience</span>
+            </a>
 
-          <a
-            className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
-            href="#portfolio"
-          >
-            <FiBook className="text-2xl" />
-            <span className="text-xs">Work</span>
-          </a>
+            <a
+              className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
+              href="#portfolio"
+            >
+              <FiBook className="text-2xl" />
+              <span className="text-xs">Work</span>
+            </a>
 
-          <a
-            className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
-            href="#contact"
-          >
-            <FiGrid className="text-2xl" />
-            <span className="text-xs">Contact</span>
-          </a>
+            <a
+              className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
+              href="#contact"
+            >
+              <FiGrid className="text-2xl" />
+              <span className="text-xs">Contact</span>
+            </a>
 
-          <a
-            className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
-            href="#footer"
-          >
-            <FiFileText className="text-2xl" />
-            <span className="text-xs">Footer</span>
-          </a>
+            <a
+              className="flex flex-col items-center cursor-pointer text-white hover:bg-teal-800 p-2 rounded-full transition-all duration-300"
+              href="#footer"
+            >
+              <FiFileText className="text-2xl" />
+              <span className="text-xs">Footer</span>
+            </a>
+          </div>
         </div>
         {/* infomation */}
         <motion.section
@@ -497,33 +505,38 @@ export default function MyPortfolio() {
           </div>
         </motion.section>
         {/* Footer */}
-        <footer className="pt-16 border-t text-gray-400 text-sm">
-          <p>© 2025 MyPortfolio. All rights reserved.</p>
-          <div className="flex justify-center gap-6 mt-4 text-lg">
-            <a className="hover:text-gray-600 flex items-center gap-1" href="mailto:your@email.com">
-              <FiMail /> Email
-            </a>
-            <a className="hover:text-gray-600 flex items-center gap-1" href="tel:+123456789">
-              <FiPhone /> Phone
-            </a>
-            <a
-              className="hover:text-gray-600 flex items-center gap-1"
-              href="https://github.com/yourname"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <FiGithub /> GitHub
-            </a>
-            <a
-              className="hover:text-gray-600 flex items-center gap-1"
-              href="https://linkedin.com/in/yourname"
-              rel="noreferrer"
-              target="_blank"
-            >
-              <FiLinkedin /> LinkedInnn
-            </a>
-          </div>
-        </footer>
+        <div className="px-6 space-y-3">
+          <footer className="pt-16 border-t text-gray-400 text-sm">
+            <p>© 2025 MyPortfolio. All rights reserved.</p>
+            <div className="flex justify-center gap-4 mt-4 text-lg">
+              <a
+                className="hover:text-gray-600 flex items-center gap-1"
+                href="mailto:your@email.com"
+              >
+                <FiMail /> Email
+              </a>
+              <a className="hover:text-gray-600 flex items-center gap-1" href="tel:+123456789">
+                <FiPhone /> Phone
+              </a>
+              <a
+                className="hover:text-gray-600 flex items-center gap-1"
+                href="https://github.com/yourname"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <FiGithub /> GitHub
+              </a>
+              <a
+                className="hover:text-gray-600 flex items-center gap-1"
+                href="https://linkedin.com/in/yourname"
+                rel="noreferrer"
+                target="_blank"
+              >
+                <FiLinkedin /> LinkedInnn
+              </a>
+            </div>
+          </footer>
+        </div>
       </div>
     </DefaultLayout>
   )
